@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZXProductCommentBar" customModule="Zhixin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxn-72-WmX">
+                    <rect key="frame" x="260" y="0.0" width="60" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJF-p3-OOW">
+                            <rect key="frame" x="20" y="0.0" width="20" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="roP-1Z-F5a"/>
+                            </constraints>
+                            <state key="normal" image="publish">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="aJF-p3-OOW" secondAttribute="bottom" id="1Hq-8I-hfe"/>
+                        <constraint firstAttribute="width" constant="60" id="SuJ-bW-vvE"/>
+                        <constraint firstItem="aJF-p3-OOW" firstAttribute="top" secondItem="Xxn-72-WmX" secondAttribute="top" id="Z4D-FL-vwN"/>
+                        <constraint firstAttribute="trailing" secondItem="aJF-p3-OOW" secondAttribute="trailing" constant="20" id="xlR-Qw-9dJ"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="说点什么吧..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-LU-UJD">
+                    <rect key="frame" x="8" y="7" width="244" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="dYI-gN-uju"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Xxn-72-WmX" secondAttribute="bottom" id="22m-Vq-YrZ"/>
+                <constraint firstItem="aPN-LU-UJD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="Fib-FS-U5P"/>
+                <constraint firstItem="Xxn-72-WmX" firstAttribute="leading" secondItem="aPN-LU-UJD" secondAttribute="trailing" constant="8" id="HCt-3c-eDq"/>
+                <constraint firstItem="Xxn-72-WmX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PZQ-R2-akD"/>
+                <constraint firstItem="aPN-LU-UJD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ndU-o9-fBN"/>
+                <constraint firstAttribute="trailing" secondItem="Xxn-72-WmX" secondAttribute="trailing" id="xqO-Jz-tcl"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="button" destination="aJF-p3-OOW" id="FVX-3k-V0I"/>
+                <outlet property="filed" destination="aPN-LU-UJD" id="otq-bT-MqA"/>
+            </connections>
+            <point key="canvasLocation" x="315" y="231"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="publish" width="20" height="20"/>
+    </resources>
+</document>

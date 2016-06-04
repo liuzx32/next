@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXSearchViewController" customModule="Zhixin" customModuleProvider="target">
+            <connections>
+                <outlet property="backView" destination="bgv-2H-2gY" id="8qZ-Bo-BFs"/>
+                <outlet property="field" destination="B2z-sF-JGJ" id="GPq-xb-Uzs"/>
+                <outlet property="scroll" destination="kRs-lW-7Gy" id="zIA-5o-rcY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="Odm-ET-kxP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsI-yX-d20">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xB-85-Hx4">
+                            <rect key="frame" x="8" y="16" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="VcQ-uH-mQT"/>
+                                <constraint firstAttribute="width" constant="40" id="lxu-66-2aS"/>
+                            </constraints>
+                            <state key="normal" image="back"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="XrX-VY-Dl6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9F-ze-G65">
+                            <rect key="frame" x="272" y="16" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="e3g-uB-bPE"/>
+                                <constraint firstAttribute="height" constant="40" id="mCp-Bm-f4M"/>
+                            </constraints>
+                            <state key="normal" image="clander"/>
+                            <connections>
+                                <action selector="clanderButtonPressed:" destination="-1" eventType="touchUpInside" id="55Z-Vq-QdJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWf-cE-HMy">
+                            <rect key="frame" x="218" y="16" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="ZzZ-lf-Va3"/>
+                                <constraint firstAttribute="width" constant="40" id="yvA-B1-rjf"/>
+                            </constraints>
+                            <state key="normal" image="search"/>
+                            <connections>
+                                <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="alm-qn-krr"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索产品,主题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2z-sF-JGJ">
+                            <rect key="frame" x="45" y="21" width="165" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.062745098039215685" green="0.50980392156862742" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="V9F-ze-G65" firstAttribute="leading" secondItem="EWf-cE-HMy" secondAttribute="trailing" constant="14" id="Bbk-UW-HAy"/>
+                        <constraint firstAttribute="trailing" secondItem="V9F-ze-G65" secondAttribute="trailing" constant="8" id="GAF-R0-fUA"/>
+                        <constraint firstAttribute="height" constant="64" id="LfQ-6K-T1l"/>
+                        <constraint firstAttribute="bottom" secondItem="EWf-cE-HMy" secondAttribute="bottom" constant="8" id="NcP-jK-C0P"/>
+                        <constraint firstAttribute="bottom" secondItem="B2z-sF-JGJ" secondAttribute="bottom" constant="13" id="O0K-as-pCq"/>
+                        <constraint firstItem="B2z-sF-JGJ" firstAttribute="leading" secondItem="XsI-yX-d20" secondAttribute="leading" constant="45" id="Tci-J5-FyC"/>
+                        <constraint firstItem="B2z-sF-JGJ" firstAttribute="top" secondItem="XsI-yX-d20" secondAttribute="top" constant="21" id="UJZ-mt-JZn"/>
+                        <constraint firstItem="7xB-85-Hx4" firstAttribute="leading" secondItem="XsI-yX-d20" secondAttribute="leading" constant="8" id="c72-L5-6rw"/>
+                        <constraint firstAttribute="bottom" secondItem="7xB-85-Hx4" secondAttribute="bottom" constant="8" id="djm-ch-rBy"/>
+                        <constraint firstAttribute="bottom" secondItem="V9F-ze-G65" secondAttribute="bottom" constant="8" id="fHn-VF-c5x"/>
+                        <constraint firstItem="EWf-cE-HMy" firstAttribute="leading" secondItem="B2z-sF-JGJ" secondAttribute="trailing" constant="8" id="uRm-P3-BHy"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgv-2H-2gY">
+                    <rect key="frame" x="0.0" y="64" width="320" height="35"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="pus-0Y-nsg"/>
+                    </constraints>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRs-lW-7Gy">
+                    <rect key="frame" x="0.0" y="99" width="320" height="469"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bgv-2H-2gY" secondAttribute="trailing" id="7Fz-B0-0bm"/>
+                <constraint firstItem="bgv-2H-2gY" firstAttribute="top" secondItem="XsI-yX-d20" secondAttribute="bottom" id="Ke3-nb-jjP"/>
+                <constraint firstItem="XsI-yX-d20" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MDF-ev-g0n"/>
+                <constraint firstItem="kRs-lW-7Gy" firstAttribute="top" secondItem="bgv-2H-2gY" secondAttribute="bottom" id="OQk-rp-pOk"/>
+                <constraint firstAttribute="trailing" secondItem="XsI-yX-d20" secondAttribute="trailing" id="QYK-ef-Cfo"/>
+                <constraint firstAttribute="trailing" secondItem="kRs-lW-7Gy" secondAttribute="trailing" id="SVB-F1-qsy"/>
+                <constraint firstAttribute="bottom" secondItem="kRs-lW-7Gy" secondAttribute="bottom" id="VIx-wu-1qB"/>
+                <constraint firstItem="XsI-yX-d20" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vVf-uv-d6Q"/>
+                <constraint firstItem="kRs-lW-7Gy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wa4-PX-SvZ"/>
+                <constraint firstItem="bgv-2H-2gY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zEb-52-izR"/>
+            </constraints>
+            <point key="canvasLocation" x="302" y="297"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="20" height="20"/>
+        <image name="clander" width="20" height="20"/>
+        <image name="search" width="20" height="20"/>
+    </resources>
+</document>
