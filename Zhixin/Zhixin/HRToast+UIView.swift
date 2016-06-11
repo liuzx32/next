@@ -131,7 +131,7 @@ extension UIView {
     }
     
     func makeToast(message msg: String) {
-        self.makeToast(message: msg, duration: HRToastDefaultDuration, position: HRToastPositionCenter)
+        self.makeToast(message: msg, duration: HRToastDefaultDuration, position: HRToastPositionDefault)
     }
     
     func makeToast(message msg: String, duration: Double, position: AnyObject) {

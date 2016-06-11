@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXDateProductsViewController" customModule="Zhixin" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="nIG-eM-s5i" id="qQW-bg-7hZ"/>
+                <outlet property="naviView" destination="jQs-jN-pPa" id="i33-5C-pO4"/>
+                <outlet property="shareButton" destination="ULB-wT-uaB" id="vix-JX-Rb8"/>
+                <outlet property="tLabel" destination="npw-6c-lfy" id="wCS-Bw-9af"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQs-jN-pPa">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syg-L6-NGp">
+                            <rect key="frame" x="8" y="21" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Gqh-Z9-qLR"/>
+                                <constraint firstAttribute="width" constant="40" id="Z1k-ad-ALq"/>
+                            </constraints>
+                            <state key="normal" image="back"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="tNu-YX-OsO"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npw-6c-lfy">
+                            <rect key="frame" x="47" y="30" width="155" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="FF6-tD-CoV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIG-eM-s5i" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
+                            <rect key="frame" x="272" y="21" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="gtu-e9-dP1"/>
+                                <constraint firstAttribute="width" constant="40" id="oFQ-ij-0RT"/>
+                            </constraints>
+                            <state key="normal" image="add"/>
+                            <connections>
+                                <action selector="addButttonPressed:" destination="-1" eventType="touchUpInside" id="AIj-H7-rJ0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULB-wT-uaB" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
+                            <rect key="frame" x="224" y="21" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="VVo-vW-NnS"/>
+                                <constraint firstAttribute="width" constant="40" id="yl9-Tt-uwi"/>
+                            </constraints>
+                            <state key="normal" image="share"/>
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="jVW-BK-aTP"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.062745098040000002" green="0.50980392159999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="npw-6c-lfy" firstAttribute="top" secondItem="jQs-jN-pPa" secondAttribute="top" constant="30" id="7e7-q4-ft7"/>
+                        <constraint firstAttribute="trailing" secondItem="nIG-eM-s5i" secondAttribute="trailing" constant="8" id="Eat-Zz-cB5"/>
+                        <constraint firstItem="ULB-wT-uaB" firstAttribute="top" secondItem="jQs-jN-pPa" secondAttribute="top" constant="21" id="Hyc-9p-ZvV"/>
+                        <constraint firstAttribute="height" constant="64" id="Lvh-Bx-MBO"/>
+                        <constraint firstItem="ULB-wT-uaB" firstAttribute="leading" secondItem="npw-6c-lfy" secondAttribute="trailing" constant="22" id="Pt8-vW-nZH"/>
+                        <constraint firstItem="npw-6c-lfy" firstAttribute="leading" secondItem="jQs-jN-pPa" secondAttribute="leading" constant="47" id="QZy-fi-Y5k"/>
+                        <constraint firstItem="nIG-eM-s5i" firstAttribute="top" secondItem="jQs-jN-pPa" secondAttribute="top" constant="21" id="X2X-1z-mLu"/>
+                        <constraint firstItem="Syg-L6-NGp" firstAttribute="top" secondItem="jQs-jN-pPa" secondAttribute="top" constant="21" id="hFI-vp-kdA"/>
+                        <constraint firstItem="Syg-L6-NGp" firstAttribute="leading" secondItem="jQs-jN-pPa" secondAttribute="leading" constant="8" id="izZ-qG-5y2"/>
+                        <constraint firstItem="nIG-eM-s5i" firstAttribute="leading" secondItem="ULB-wT-uaB" secondAttribute="trailing" constant="8" id="jZs-E9-nPz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jQs-jN-pPa" secondAttribute="trailing" id="V1U-Hd-T1d"/>
+                <constraint firstItem="jQs-jN-pPa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XsZ-fX-o4K"/>
+                <constraint firstItem="jQs-jN-pPa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vkT-RM-osP"/>
+            </constraints>
+            <point key="canvasLocation" x="328" y="295"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add" width="20" height="20"/>
+        <image name="back" width="20" height="20"/>
+        <image name="share" width="20" height="20"/>
+    </resources>
+</document>

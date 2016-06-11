@@ -31,7 +31,7 @@
                                 <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="gdv-w3-gh7"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-go-MeT">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-go-MeT" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="272" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Fd6-Lv-pOT"/>
@@ -42,7 +42,7 @@
                                 <action selector="addButtonPressed:" destination="-1" eventType="touchUpInside" id="TMz-3c-pCW"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qu6-tq-PI0">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qu6-tq-PI0" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="224" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="ETG-2X-2hO"/>
@@ -53,7 +53,7 @@
                                 <action selector="sharebuttonPressed:" destination="-1" eventType="touchUpInside" id="64R-aw-3z8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8I-9h-vPb">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8I-9h-vPb" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="176" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Ikw-S6-vsW"/>

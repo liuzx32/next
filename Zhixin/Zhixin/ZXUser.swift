@@ -20,7 +20,7 @@ class ZXUser: ZXModel {
     override init(dict: NSDictionary!) {
         self.nickName = dict["nick"] as?  String
         self.avatar = dict["icon"] as? String
-        self.userID = dict["uno"] as? Int32
+        self.userID = dict["uno"]?.intValue
         self.mail = dict["email"] as? String
         self.job = dict["job"] as? String
         self.sig = dict["desc"] as? String

@@ -122,22 +122,51 @@ class ZXAccountLoginViewController: UIViewController {
                 "userAccount": self.mailField!.text!,
                 "userPasswd": self.passwordField!.text!,
                 ]
+        
             
             Alamofire.request(.POST, "http://www.npinfang.com/apps/signin", parameters: parameters).responseJSON(completionHandler: {response in
                 
-                if response.response?.statusCode == 200 {
+                do {
                     
-                    UIApplication.sharedApplication().keyWindow?.makeToast(message: "登录成功")
-                    LoginedUser.sharedInstance.mail = self.mailField?.text
-//                    LoginedUser.sharedInstance.nickName = "N品方"
-                    LoginedUser.sharedInstance.userID = 1
-                    LoginedUser.sharedInstance.syc()
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    NSNotificationCenter.defaultCenter().postNotificationName(kLoginSuccess, object: nil)
-                } else {
+                    let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+                    //                print("the Json is \(JSON)")
+                    print("so the data is \(JSON["data"]!)")
+//                    let data = JSON["data"]
                     
-                    UIApplication.sharedApplication().keyWindow?.makeToast(message: "登录失败")
+                    if let data = JSON["data"]! {
+                        
+                        print("so the data is \(data)")
+                        
+                        let cook = response.response?.allHeaderFields["Set-Cookie"] as? String
+                        
+                        if response.response?.statusCode == 200 {
+                            
+                            UIApplication.sharedApplication().keyWindow?.makeToast(message: "登录成功")
+                            LoginedUser.sharedInstance.mail = self.mailField?.text
+                            LoginedUser.sharedInstance.nickName = data["nick"] as? String
+                            var number = data["uno"] as? NSNumber
+                            LoginedUser.sharedInstance.userID = number?.intValue;
+                            LoginedUser.sharedInstance.syc()
+                            
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                            self.navigationController?.popViewControllerAnimated(true)
+                            NSNotificationCenter.defaultCenter().postNotificationName(kLoginSuccess, object: nil)
+                            
+                            
+                            let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(response.response!.allHeaderFields as! [String: String], forURL: response.response!.URL!)
+                            Alamofire.Manager.sharedInstance.session.configuration.HTTPCookieStorage?.setCookies(cookies, forURL: NSURL(string: "http://www.npinfang.com/"), mainDocumentURL: nil)
+                            
+                        } else {
+                            
+                            UIApplication.sharedApplication().keyWindow?.makeToast(message: "登录失败")
+                        }
+                    }
+                    
+                } catch {
+                    print("hehe?")
                 }
+                
+                
             })//测试帐号 123@a.com 111111
         } else if newV == LoginType.LoginTypeRegister {
             
@@ -148,6 +177,17 @@ class ZXAccountLoginViewController: UIViewController {
             
             Alamofire.request(.POST, "http://www.npinfang.com/apps/signup/email", parameters: parameters).responseJSON(completionHandler: {response in
                 
+                do {
+                    
+                                    let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+                                    //                print("the Json is \(JSON)")
+                                    print("so the data is \(JSON["data"]!)")
+                } catch {
+                    
+                }
+                
+
+                
                 
                 let cook = response.response?.allHeaderFields["Set-Cookie"] as? String
                 print("cookie is \(cook)")
@@ -156,7 +196,7 @@ class ZXAccountLoginViewController: UIViewController {
                     UIApplication.sharedApplication().keyWindow?.makeToast(message: "注册成功")
                     LoginedUser.sharedInstance.mail = self.mailField?.text
                     LoginedUser.sharedInstance.nickName = "N品方"
-                    LoginedUser.sharedInstance.userID = 1
+//                    LoginedUser.sharedInstance.userID = 1
                     LoginedUser.sharedInstance.syc()
                     self.dismissViewControllerAnimated(true, completion: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName(kLoginSuccess, object: nil)

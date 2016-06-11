@@ -135,7 +135,7 @@ class ZXAccountManagerViewController: UIViewController, UIActionSheetDelegate,UI
     
     func outButtonPressed(sender : UIButton) {
         let alert = UIAlertView()
-        alert.title = "Alert"
+//        alert.title = "Alert"
         alert.delegate = self
         alert.message = "确定要退出吗?"
         alert.addButtonWithTitle("确定")
@@ -171,6 +171,7 @@ class ZXAccountManagerViewController: UIViewController, UIActionSheetDelegate,UI
             return
         } else {
             LoginedUser.sharedInstance.userID = 0
+            LoginedUser.sharedInstance.syc()
             self.navigationController?.popViewControllerAnimated(true)
             NSNotificationCenter.defaultCenter().postNotificationName(kLogoutSuccess, object: nil)
         }

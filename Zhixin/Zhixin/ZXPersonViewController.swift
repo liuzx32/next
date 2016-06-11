@@ -59,6 +59,7 @@ class ZXPersonViewController: UIViewController, UIScrollViewDelegate, productsTa
         
         self.publishedTableView = ZXProductsTableViewController(style: UITableViewStyle.Plain)
         self.publishedTableView?.productType = productsType.publishes
+        self.publishedTableView?.userID = self.user?.userID
         self.scroll?.addSubview((self.publishedTableView?.view)!)
         self.publishedTableView?.delegate = self
         self.publishedTableView?.productType = productsType.publishes
@@ -67,6 +68,7 @@ class ZXPersonViewController: UIViewController, UIScrollViewDelegate, productsTa
 //        self.publishedTableView?.tableView.tableHeaderView = self.pubHeader!
         
         self.topicsTableView = ZXTopicsTableViewController(style: UITableViewStyle.Plain, type: TopicType.topicTypePerson)
+        self.topicsTableView?.userID = self.user?.userID
         self.topicsTableView?.delegate = self
         self.scroll?.addSubview((self.topicsTableView?.view)!)
         self.topicsTableView?.view.frame = CGRectMake((UIScreen.mainScreen().bounds.size.width * 2), 0, (self.scroll?.bounds.width)!, (self.scroll?.bounds.height)!)
@@ -81,16 +83,22 @@ class ZXPersonViewController: UIViewController, UIScrollViewDelegate, productsTa
         self.zanButton?.setTitle("点赞", forState: UIControlState.Normal)
         self.zanButton?.setTitleColor(Colors.UIColorFromRGB(0x333333), forState: UIControlState.Normal)
         self.stableSlider.addSubview(self.zanButton!)
+        self.zanButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
+        self.zanButton?.addTarget(self, action: #selector(ZXPersonViewController.zanButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.pubButton = UIButton(frame: CGRectMake(self.stableSlider.frame.size.width / 3, 0, self.stableSlider.frame.size.width / 3, self.stableSlider.frame.size.height))
         self.pubButton?.setTitle("发布", forState: UIControlState.Normal)
         self.pubButton?.setTitleColor(Colors.UIColorFromRGB(0x333333), forState: UIControlState.Normal)
         self.stableSlider.addSubview(self.pubButton!)
+        self.pubButton?.addTarget(self, action: #selector(ZXPersonViewController.pubButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.pubButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
         
         self.topButton = UIButton(frame: CGRectMake((self.stableSlider.frame.size.width * 2) / 3, 0, self.stableSlider.frame.size.width / 3, self.stableSlider.frame.size.height))
         self.topButton?.setTitleColor(Colors.UIColorFromRGB(0x333333), forState: UIControlState.Normal)
         self.topButton?.setTitle("收藏", forState: UIControlState.Normal)
         self.stableSlider.addSubview(self.topButton!)
+        self.topButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
+        self.topButton?.addTarget(self, action: #selector(ZXPersonViewController.topButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.displayingTable = self.zansTableView
         
@@ -106,21 +114,28 @@ class ZXPersonViewController: UIViewController, UIScrollViewDelegate, productsTa
             self.staleHeader.user = LoginedUser.sharedInstance
         }
         
-        if self.user != nil {
-            let uno = String(self.user?.userID)
-            
-            let para = [
-                "uno": uno,
-                ]
-            
-            Alamofire.request(.POST, "http://www.npinfang.com/scan/user/page", parameters: para).responseJSON(completionHandler: { (response) in
-                print("the response is \(response)")
-            })
-            
+//        if self.user != nil {
+//            let uno = String(self.user?.userID)
+//            
+//            let para = [
+//                "uno": uno,
+//                ]
+//            
+//            Alamofire.request(.POST, "http://www.npinfang.com/scan/user/page", parameters: para).responseJSON(completionHandler: { (response) in
+//                print("the response is \(response)")
+//            })
+//            
+//            return;
+//        }
+    
+        if self.user == nil {
             return;
         }
         
-        Alamofire.request(.POST, "http://www.npinfang.com/scan/user/page", parameters: ["uno" : "1"]).responseJSON(completionHandler: { (response) in
+        let uno = String(self.user?.userID)
+        let num : NSNumber!  =  NSNumber(int: (self.user?.userID)!)
+        
+        Alamofire.request(.POST, "http://www.npinfang.com/scan/user/page", parameters: ["uno" : num]).responseJSON(completionHandler: { (response) in
             print("the response is \(response)")
             do {
                 let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
@@ -151,6 +166,12 @@ class ZXPersonViewController: UIViewController, UIScrollViewDelegate, productsTa
     @IBAction func backButtonPressed(sender : AnyObject) {
         
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func rightPubButtonPressed(sender : AnyObject) {
+        
+        let controller = ZXPublishNewProductViewController(type: NewType.newTypeProduct)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -209,10 +230,23 @@ class ZXPersonViewController: UIViewController, UIScrollViewDelegate, productsTa
     }
     
     func zanButtonPressed(sender : UIButton) {
+        self.scroll?.setContentOffset(CGPointMake(0, 0), animated: true)
+    }
+    
+    func topButtonPressed(sender : UIButton) {
         
+        self.scroll?.setContentOffset(CGPointMake(self.stableSlider.frame.size.width * 2.0, 0), animated: true)
+    }
+    
+    func pubButtonPressed(sendre : UIButton) {
+        self.scroll?.setContentOffset(CGPointMake(self.stableSlider.frame.size.width, 0), animated: true)
     }
     
     func productsTableViewControllerDidScroll(sender: ZXProductsTableViewController) {
+        
+        if self.displayingTable?.tableView.contentOffset.y > 0  {
+            return
+        }
         
         if sender == self.displayingTable {
             print("the offset y is \(self.displayingTable?.tableView.contentOffset.y)")
@@ -246,6 +280,10 @@ class ZXPersonViewController: UIViewController, UIScrollViewDelegate, productsTa
     }
     
     func topicsTableViewControllerDidScroll(sender: ZXTopicsTableViewController) {
+        
+        if self.displayingTable?.tableView.contentOffset.y > 0  {
+            return
+        }
         
         if sender == self.displayingTable {
             

@@ -9,6 +9,11 @@
 import UIKit
 import Alamofire
 
+protocol ZXTopicMaskViewDelegate {
+    
+    func maskViewDidFavoTopic(favo : Bool)
+}
+
 class ZXTopicMaskView: UIView {
 
     var im : UIImageView!
@@ -40,6 +45,7 @@ class ZXTopicMaskView: UIView {
     var favoButton : UIButton!
     var arr : UIImageView!
     var scLabel : UILabel!
+    var delegate : ZXTopicMaskViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,6 +117,7 @@ class ZXTopicMaskView: UIView {
                         self.favoButton.layer.borderWidth = 0.5
                         self.favoButton.layer.borderColor = Colors.navigationColor().CGColor
                         self.topic?.favoed = false
+                         self.delegate?.maskViewDidFavoTopic(false)
                         
                     } else {
                         // 登录
@@ -141,6 +148,7 @@ class ZXTopicMaskView: UIView {
                         self.favoButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                         self.makeToast(message: "收藏成功")
                         self.topic?.favoed = true
+                        self.delegate?.maskViewDidFavoTopic(true)
                         
                     } else {
                         // 登录

@@ -24,7 +24,9 @@ class LoginedUser: ZXUser {
     func syc() {
         NSUserDefaults.standardUserDefaults().setObject(self.nickName, forKey: "nickname")
         NSUserDefaults.standardUserDefaults().setObject(self.mail, forKey: "mail")
-        NSUserDefaults.standardUserDefaults().setInteger(Int(self.userID!), forKey: "userID")
+        if self.userID != nil {
+            NSUserDefaults.standardUserDefaults().setInteger(Int(self.userID!), forKey: "userID")
+        }
         if self.job != nil {
             NSUserDefaults.standardUserDefaults().setObject(self.job, forKey: "job")
         }

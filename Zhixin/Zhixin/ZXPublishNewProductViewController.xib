@@ -11,6 +11,7 @@
                 <outlet property="bottomLine" destination="SRb-9Z-uVy" id="6V0-4U-GmK"/>
                 <outlet property="desField" destination="AWu-ng-dCX" id="Yup-v7-BEN"/>
                 <outlet property="nameFiled" destination="l48-yW-iLd" id="wSO-sr-tgH"/>
+                <outlet property="naviView" destination="Jwx-v1-cqw" id="5X5-LU-AVJ"/>
                 <outlet property="netFiled" destination="VWJ-J8-dhZ" id="UGv-vv-QCg"/>
                 <outlet property="publishButton" destination="FoF-87-P31" id="7Xb-8h-Hmg"/>
                 <outlet property="tLabel" destination="rzm-cn-cns" id="Hf3-wc-tjQ"/>
@@ -26,7 +27,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sy8-24-HM4">
-                            <rect key="frame" x="6" y="13" width="40" height="40"/>
+                            <rect key="frame" x="6" y="16" width="40" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Loh-qJ-znQ"/>
@@ -50,7 +51,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoF-87-P31">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoF-87-P31" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="272" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="WQs-Ca-MW4"/>
@@ -69,7 +70,7 @@
                         <constraint firstItem="rzm-cn-cns" firstAttribute="top" secondItem="Jwx-v1-cqw" secondAttribute="top" constant="22" id="EBW-pg-JOm"/>
                         <constraint firstItem="rzm-cn-cns" firstAttribute="centerX" secondItem="Jwx-v1-cqw" secondAttribute="centerX" id="QsN-bc-vT2"/>
                         <constraint firstItem="FoF-87-P31" firstAttribute="top" secondItem="Jwx-v1-cqw" secondAttribute="top" constant="16" id="c9A-sP-uHO"/>
-                        <constraint firstItem="sy8-24-HM4" firstAttribute="top" secondItem="Jwx-v1-cqw" secondAttribute="top" constant="13" id="g0r-YY-u28"/>
+                        <constraint firstItem="sy8-24-HM4" firstAttribute="top" secondItem="Jwx-v1-cqw" secondAttribute="top" constant="16" id="g0r-YY-u28"/>
                         <constraint firstAttribute="height" constant="64" id="pWB-2P-0s2"/>
                     </constraints>
                 </view>
@@ -89,14 +90,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYl-hx-B2C">
-                    <rect key="frame" x="21" y="154.5" width="278" height="0.5"/>
+                    <rect key="frame" x="21" y="159.5" width="278" height="0.5"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="scD-Jx-xNU"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="一句话描述" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-ng-dCX">
-                    <rect key="frame" x="21" y="165" width="278" height="30"/>
+                    <rect key="frame" x="21" y="170" width="278" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="mc4-b1-Iys"/>
                     </constraints>
@@ -104,14 +105,14 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-9Z-uVy">
-                    <rect key="frame" x="21" y="192.5" width="278" height="0.5"/>
+                    <rect key="frame" x="21" y="198.5" width="278" height="0.5"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="bqb-ix-MDM"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="产品官网" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VWJ-J8-dhZ">
-                    <rect key="frame" x="21" y="127" width="278" height="30"/>
+                    <rect key="frame" x="21" y="132" width="278" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="vm7-Np-BKK"/>
                     </constraints>
@@ -130,12 +131,12 @@
                 <constraint firstItem="Jwx-v1-cqw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TmP-v2-b9G"/>
                 <constraint firstAttribute="trailing" secondItem="SRb-9Z-uVy" secondAttribute="trailing" constant="21" id="Y3P-UZ-c5o"/>
                 <constraint firstAttribute="trailing" secondItem="AWu-ng-dCX" secondAttribute="trailing" constant="21" id="Zor-VF-wEo"/>
-                <constraint firstItem="SRb-9Z-uVy" firstAttribute="top" secondItem="VWJ-J8-dhZ" secondAttribute="bottom" constant="35.5" id="bfa-rf-yZI"/>
-                <constraint firstItem="VWJ-J8-dhZ" firstAttribute="top" secondItem="l48-yW-iLd" secondAttribute="bottom" constant="8" id="drs-8X-fnh"/>
+                <constraint firstItem="SRb-9Z-uVy" firstAttribute="top" secondItem="VWJ-J8-dhZ" secondAttribute="bottom" constant="36.5" id="bfa-rf-yZI"/>
+                <constraint firstItem="VWJ-J8-dhZ" firstAttribute="top" secondItem="l48-yW-iLd" secondAttribute="bottom" constant="13" id="drs-8X-fnh"/>
                 <constraint firstItem="VWJ-J8-dhZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="eBL-jd-pE8"/>
                 <constraint firstItem="Jwx-v1-cqw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fiI-Hp-9eI"/>
                 <constraint firstItem="ZN7-Vg-ygG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="gLW-3u-WAe"/>
-                <constraint firstItem="NYl-hx-B2C" firstAttribute="top" secondItem="l48-yW-iLd" secondAttribute="bottom" constant="35.5" id="gqD-Vu-iRL"/>
+                <constraint firstItem="NYl-hx-B2C" firstAttribute="top" secondItem="l48-yW-iLd" secondAttribute="bottom" constant="40.5" id="gqD-Vu-iRL"/>
                 <constraint firstItem="NYl-hx-B2C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="jj8-bS-oNZ"/>
                 <constraint firstItem="ZN7-Vg-ygG" firstAttribute="top" secondItem="Jwx-v1-cqw" secondAttribute="bottom" constant="52" id="mFw-vU-A4u"/>
                 <constraint firstAttribute="trailing" secondItem="Jwx-v1-cqw" secondAttribute="trailing" id="vEX-fO-2do"/>

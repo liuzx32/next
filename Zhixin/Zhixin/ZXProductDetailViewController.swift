@@ -27,6 +27,7 @@ import Alamofire
 class ZXProductDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var scroll : UIScrollView?
+    @IBOutlet var naviView : UIView?
     @IBOutlet var back : UIView?
     @IBOutlet var tLabel : UILabel?
     var indicator : UIView!
@@ -45,6 +46,7 @@ class ZXProductDetailViewController: UIViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
         self.tabBarController?.tabBar.hidden = true
+        self.naviView?.backgroundColor = Colors.navigationColor()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZXProductDetailViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZXProductDetailViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -87,7 +89,6 @@ class ZXProductDetailViewController: UIViewController, UIScrollViewDelegate {
         var rect2 = self.tableViewController?.tableView.frame
         rect2?.size.width = self.view.frame.size.width
         self.tableViewController?.tableView.frame = rect2!
-        self.tableViewController?.tableView.backgroundColor = UIColor.redColor()
         
         self.bar = NSBundle.mainBundle().loadNibNamed("ZXProductCommentBar", owner: nil, options: nil)[0] as? ZXProductCommentBar
         self.bar?.autoresizingMask = UIViewAutoresizing.None

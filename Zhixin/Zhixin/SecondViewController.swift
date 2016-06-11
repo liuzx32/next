@@ -12,8 +12,8 @@ class SecondViewController: UIViewController, UIScrollViewDelegate {
     
     var navigationView : UIView!
     var icon : UIImageView!
-    var searchButton : UIButton!
-    var addButton : UIButton!
+    var searchButton : ZXNavigationButton!
+    var addButton : ZXNavigationButton!
     @IBOutlet var backView : UIView!
     var indicator : UIView!
     
@@ -29,6 +29,7 @@ class SecondViewController: UIViewController, UIScrollViewDelegate {
         
         self.navigationView = UIView(frame: CGRectMake(0, 0, self.view!.frame.size.width, 64))
         self.navigationView.backgroundColor = Colors.UIColorFromRGB(0x0097e0)
+        self.navigationView.clipsToBounds = true
         
         self.icon = UIImageView(frame: CGRectMake(15, 25, 30, 30))
         self.icon.backgroundColor = UIColor.clearColor()
@@ -36,12 +37,12 @@ class SecondViewController: UIViewController, UIScrollViewDelegate {
         self.icon.image = UIImage(named: "nIcon")
         self.navigationView.addSubview(self.icon)
         
-        self.searchButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 120, 12, 54, 54))
+        self.searchButton = ZXNavigationButton(frame: CGRectMake(self.view.frame.size.width - 100, 20, 40, 40))
         self.searchButton.addTarget(self, action: #selector(SecondViewController.searchButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationView.addSubview(self.searchButton)
         self.searchButton.setImage(UIImage(named: "search"), forState: UIControlState.Normal)
         
-        self.addButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 60, 12, 54, 54))
+        self.addButton = ZXNavigationButton(frame: CGRectMake(self.view.frame.size.width - 50, 20, 40, 40))
         self.addButton.addTarget(self, action: #selector(SecondViewController.addButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.addButton.setImage(UIImage(named: "add"), forState: UIControlState.Normal)
         self.navigationView.addSubview(self.addButton)
@@ -53,12 +54,14 @@ class SecondViewController: UIViewController, UIScrollViewDelegate {
         self.newestButton.addTarget(self, action: #selector(SecondViewController.newestButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.backView.addSubview(self.newestButton)
         self.newestButton.selected = true
+        self.newestButton.titleLabel?.font = UIFont.systemFontOfSize(18)
         
         self.hotestButton = UIButton(frame: CGRectMake(self.view.frame.size.width / 2, 0, self.view.frame.size.width / 2, 33))
         self.hotestButton.setTitle("最热", forState: UIControlState.Normal)
         self.hotestButton.setTitleColor(Colors.navigationColor(), forState: UIControlState.Selected)
         self.hotestButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         self.hotestButton.addTarget(self, action: #selector(SecondViewController.hotestButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.hotestButton.titleLabel?.font = UIFont.systemFontOfSize(18)
         self.backView.addSubview(self.hotestButton)
         
         self.indicator = UIView(frame: CGRectMake(0, 33, self.view.frame.size.width / 2, 2))

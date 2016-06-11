@@ -92,18 +92,11 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JXT-YH-F3U">
-                    <rect key="frame" x="8" y="85" width="31" height="30"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="JXT-YH-F3U">
+                    <rect key="frame" x="15" y="89" width="20" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="01v-rl-W2r"/>
-                        <constraint firstAttribute="width" constant="31" id="w09-o8-FYN"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dxf-1d-Z0p">
-                    <rect key="frame" x="8" y="123" width="31" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="Zi9-Yu-hux"/>
-                        <constraint firstAttribute="width" constant="31" id="dWc-fW-XOA"/>
+                        <constraint firstAttribute="height" constant="20" id="01v-rl-W2r"/>
+                        <constraint firstAttribute="width" constant="20" id="w09-o8-FYN"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fP8-n0-aNa">
@@ -133,28 +126,35 @@
                         <action selector="loginButtonPressed:" destination="-1" eventType="touchUpInside" id="vdI-Vd-KcC"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="Dxf-1d-Z0p">
+                    <rect key="frame" x="14" y="125" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Zi9-Yu-hux"/>
+                        <constraint firstAttribute="width" constant="20" id="dWc-fW-XOA"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="l3J-Pj-GPF" secondAttribute="trailing" id="0oa-NM-qOc"/>
                 <constraint firstAttribute="trailing" secondItem="Ydk-qh-mg9" secondAttribute="trailing" constant="6" id="6Fo-M3-MmX"/>
                 <constraint firstItem="v9Z-8a-VNs" firstAttribute="top" secondItem="l3J-Pj-GPF" secondAttribute="bottom" constant="21" id="6nd-mo-cEU"/>
-                <constraint firstItem="JXT-YH-F3U" firstAttribute="top" secondItem="l3J-Pj-GPF" secondAttribute="bottom" constant="21" id="BXH-oN-yDe"/>
+                <constraint firstItem="JXT-YH-F3U" firstAttribute="top" secondItem="l3J-Pj-GPF" secondAttribute="bottom" constant="25" id="BXH-oN-yDe"/>
                 <constraint firstAttribute="trailing" secondItem="fP8-n0-aNa" secondAttribute="trailing" constant="8" id="Hce-9n-fLY"/>
                 <constraint firstItem="l3J-Pj-GPF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I6J-wS-fVv"/>
-                <constraint firstItem="Ydk-qh-mg9" firstAttribute="leading" secondItem="Dxf-1d-Z0p" secondAttribute="trailing" constant="8" id="IBy-cW-ekw"/>
-                <constraint firstItem="GAV-1r-pcy" firstAttribute="top" secondItem="Dxf-1d-Z0p" secondAttribute="bottom" constant="29" id="IFz-o0-lHY"/>
+                <constraint firstItem="Ydk-qh-mg9" firstAttribute="leading" secondItem="Dxf-1d-Z0p" secondAttribute="trailing" constant="13" id="IBy-cW-ekw"/>
+                <constraint firstItem="GAV-1r-pcy" firstAttribute="top" secondItem="Dxf-1d-Z0p" secondAttribute="bottom" constant="37" id="IFz-o0-lHY"/>
                 <constraint firstAttribute="trailing" secondItem="UFI-uM-tlf" secondAttribute="trailing" constant="8" id="OAS-YL-BgL"/>
                 <constraint firstItem="l3J-Pj-GPF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RTM-c9-MOF"/>
                 <constraint firstItem="GAV-1r-pcy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="URh-w8-Zn0"/>
-                <constraint firstItem="JXT-YH-F3U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="WAT-BT-Pu2"/>
+                <constraint firstItem="JXT-YH-F3U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="WAT-BT-Pu2"/>
                 <constraint firstItem="fP8-n0-aNa" firstAttribute="top" secondItem="l3J-Pj-GPF" secondAttribute="bottom" constant="49" id="XYt-OM-2F0"/>
-                <constraint firstItem="UFI-uM-tlf" firstAttribute="top" secondItem="JXT-YH-F3U" secondAttribute="bottom" constant="36.5" id="b7z-jT-DoF"/>
+                <constraint firstItem="UFI-uM-tlf" firstAttribute="top" secondItem="JXT-YH-F3U" secondAttribute="bottom" constant="42.5" id="b7z-jT-DoF"/>
                 <constraint firstAttribute="trailing" secondItem="v9Z-8a-VNs" secondAttribute="trailing" constant="6" id="cgj-L8-xfq"/>
-                <constraint firstItem="v9Z-8a-VNs" firstAttribute="leading" secondItem="JXT-YH-F3U" secondAttribute="trailing" constant="8" id="dof-Rs-gf2"/>
+                <constraint firstItem="v9Z-8a-VNs" firstAttribute="leading" secondItem="JXT-YH-F3U" secondAttribute="trailing" constant="12" id="dof-Rs-gf2"/>
                 <constraint firstAttribute="trailing" secondItem="GAV-1r-pcy" secondAttribute="trailing" constant="21" id="hha-6T-TwR"/>
-                <constraint firstItem="Dxf-1d-Z0p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ifi-JL-wpD"/>
-                <constraint firstItem="Dxf-1d-Z0p" firstAttribute="top" secondItem="JXT-YH-F3U" secondAttribute="bottom" constant="8" id="lx3-YI-nlN"/>
+                <constraint firstItem="Dxf-1d-Z0p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="ifi-JL-wpD"/>
+                <constraint firstItem="Dxf-1d-Z0p" firstAttribute="top" secondItem="JXT-YH-F3U" secondAttribute="bottom" constant="16" id="lx3-YI-nlN"/>
                 <constraint firstItem="fP8-n0-aNa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ngP-cD-7Yd"/>
                 <constraint firstItem="UFI-uM-tlf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="oNz-jb-kCV"/>
                 <constraint firstItem="Ydk-qh-mg9" firstAttribute="top" secondItem="v9Z-8a-VNs" secondAttribute="bottom" constant="8" id="yie-dk-z7h"/>
@@ -164,5 +164,7 @@
     </objects>
     <resources>
         <image name="back" width="20" height="20"/>
+        <image name="email" width="20" height="20"/>
+        <image name="password" width="20" height="20"/>
     </resources>
 </document>

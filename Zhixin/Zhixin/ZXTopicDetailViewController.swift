@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ZXTopicMaskViewDelegate {
     
     var news : NSMutableArray!
     var tableView : UITableView!
@@ -26,7 +26,7 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.tabBarController?.tabBar.hidden = true
         self.news = NSMutableArray()
         
-        self.shareView = ZXShareView(frame: CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 300))
+        self.shareView = ZXShareView( frame: UIScreen.mainScreen().bounds)
 //        self.view.addSubview(self.shareView)
 
         // Do any additional setup after loading the view.
@@ -43,8 +43,14 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.view.insertSubview(self.maskView!, belowSubview: self.navigationView!)
         self.navigationView?.backgroundColor = UIColor.clearColor()
         self.maskView?.topic = self.topic
+        self.maskView?.delegate = self
         
         self.favoButton?.hidden = true
+        if ((self.topic?.favoed)!) {
+            self.favoButton?.setImage(UIImage(named: "favoed"), forState: UIControlState.Normal)
+        } else {
+            self.favoButton?.setImage(UIImage(named: "favo"), forState: UIControlState.Normal)
+        }
         
         var panGesture = UIPanGestureRecognizer(target: self, action:#selector(ZXTopicDetailViewController.handlePanGesture(_:)))
         self.maskView!.addGestureRecognizer(panGesture)
@@ -53,6 +59,8 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         self.tableView.headerView?.beginRefreshing()
         self.tableView.headerView?.endRefreshing()
+        
+        self.tableView.headerView?.beginRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,6 +100,7 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.news.count
@@ -179,6 +188,7 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
                         self.topic?.favoed = false
                         self.favoButton?.tintColor = UIColor.whiteColor();
                         self.view.makeToast(message: "操作成功")
+                        self.favoButton?.setImage(UIImage(named: "favo"), forState: UIControlState.Normal)
                         
                     } else {
                         // 登录
@@ -207,7 +217,8 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
                         self.favoButton?.backgroundColor = Colors.navigationColor()
                         self.topic?.favoed = true
                         self.view.makeToast(message: "收藏成功")
-                        self.favoButton?.tintColor = UIColor.redColor()
+//                        self.favoButton?.tintColor = UIColor.redColor()
+                        self.favoButton?.setImage(UIImage(named: "favoed"), forState: UIControlState.Normal)
                         
                     } else {
                         // 登录
@@ -225,6 +236,8 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func sharebuttonPressed(sender: AnyObject) {
         
         //show shareview
+        self.view.addSubview(self.shareView!)
+        self.shareView.show()
     }
     
     @IBAction func addButtonPressed(sender : AnyObject) {
@@ -232,5 +245,13 @@ class ZXTopicDetailViewController: UIViewController, UITableViewDelegate, UITabl
         let controller = ZXPublishNewProductViewController(type: NewType.newTypeProduct)
         controller.toTopic = self.topic
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func maskViewDidFavoTopic(favo : Bool) {
+        if favo == true {
+            self.favoButton?.setImage(UIImage(named: "favoed"), forState: UIControlState.Normal)
+        } else {
+            self.favoButton?.setImage(UIImage(named: "favo"), forState: UIControlState.Normal)
+        }
     }
 }

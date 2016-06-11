@@ -29,6 +29,7 @@ class ZXTopicsTableViewController: UITableViewController {
     var totalPages : NSInteger?
     var topics : NSMutableArray?
     var searchingWord : String?
+    var userID : Int32?
     
     init(style: UITableViewStyle, type : TopicType) {
     
@@ -139,6 +140,55 @@ class ZXTopicsTableViewController: UITableViewController {
                 
                 self.tableView.headerView?.endRefreshing()
             }
+            
+            return
+        } else if self.type == TopicType.topicTypePerson {
+            
+            let uno = Int(self.userID!) as NSNumber
+            
+            paras = ["page" : num,
+                     "rows" : "15",
+                     "uno" : String(uno),]
+            
+            Alamofire.request(.POST, "http://www.npinfang.com/scan/user/gain/topic", parameters: paras).responseJSON(completionHandler: { (response) in
+                //            print("the response is \(response)")
+                
+                self.tableView.headerView?.endRefreshing()
+                
+                do {
+                    let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+                    //                print("the Json is \(JSON)")
+                    //                print("so the data is \(JSON["data"]!)")
+                    
+                    let code = JSON["code"]!!.integerValue
+                    if code == 200 {
+                        
+                        self.topics?.removeAllObjects()
+                        
+                        let data = JSON["data"]
+                        let list = data!!["list"]! as? NSArray
+                        let pages = data!!["pages"] as? NSNumber
+                        self.totalPages = pages?.integerValue
+                        
+                        if list != nil {
+                            
+                            for dict in list! {
+                                print("the dict is \(dict)")
+                                let topic = ZXTopic(dict: dict as! NSDictionary)
+                                self.topics?.addObject(topic)
+                            }
+                        }
+                       
+                        self.tableView.reloadData()
+                        
+                    } else {
+                        self.view.makeToast(message: "服务器故障")
+                    }
+                    
+                } catch {
+                    
+                }
+            })
             
             return
         }

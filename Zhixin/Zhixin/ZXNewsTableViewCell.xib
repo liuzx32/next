@@ -67,9 +67,21 @@
                         <color key="textColor" red="0.30588235289999999" green="0.74117647060000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amq-Eg-AdC">
+                        <rect key="frame" x="269" y="15" width="46" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Nlv-ww-PH1"/>
+                            <constraint firstAttribute="width" constant="46" id="TqE-nn-8rB"/>
+                        </constraints>
+                        <connections>
+                            <action selector="avatarButtonPressed:" destination="Zl4-bh-CmG" eventType="touchUpInside" id="0ia-ej-7y4"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="di3-9f-XMt" firstAttribute="top" secondItem="tgi-Jv-YqX" secondAttribute="topMargin" constant="5" id="5c1-mj-bCx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Amq-Eg-AdC" secondAttribute="trailing" constant="-3" id="7ib-zb-cGs"/>
                     <constraint firstItem="di3-9f-XMt" firstAttribute="leading" secondItem="tgi-Jv-YqX" secondAttribute="leadingMargin" constant="7" id="8rm-or-Gd9"/>
                     <constraint firstAttribute="trailing" secondItem="Gav-wk-11z" secondAttribute="trailing" constant="8" id="EpP-JM-YpB"/>
                     <constraint firstItem="Gav-wk-11z" firstAttribute="top" secondItem="tgi-Jv-YqX" secondAttribute="top" constant="15" id="Hlw-MH-r9A"/>
@@ -81,12 +93,14 @@
                     <constraint firstItem="3Qh-uy-nc3" firstAttribute="top" secondItem="tgi-Jv-YqX" secondAttribute="topMargin" id="fY3-hm-i9o"/>
                     <constraint firstItem="Gav-wk-11z" firstAttribute="leading" secondItem="3Qh-uy-nc3" secondAttribute="trailing" constant="8" id="fZz-8H-g19"/>
                     <constraint firstItem="M6C-9b-3wL" firstAttribute="leading" secondItem="TmH-mx-GBV" secondAttribute="trailing" constant="9" id="fac-P8-TfE"/>
+                    <constraint firstItem="Amq-Eg-AdC" firstAttribute="top" secondItem="tgi-Jv-YqX" secondAttribute="topMargin" constant="7" id="n8W-FE-D4f"/>
                     <constraint firstItem="3Qh-uy-nc3" firstAttribute="leading" secondItem="K6d-8H-me8" secondAttribute="trailing" constant="15" id="uRm-30-Ct0"/>
                     <constraint firstAttribute="bottomMargin" secondItem="M6C-9b-3wL" secondAttribute="bottom" constant="0.5" id="uu1-8V-UC3"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatar" destination="Gav-wk-11z" id="dj6-SM-Z3S"/>
+                <outlet property="avatarButton" destination="Amq-Eg-AdC" id="OHJ-Jv-tmh"/>
                 <outlet property="conLabel" destination="M6C-9b-3wL" id="laT-ZW-h3P"/>
                 <outlet property="nameLabel" destination="3Qh-uy-nc3" id="j71-h1-HoZ"/>
                 <outlet property="zanButton" destination="di3-9f-XMt" id="Ydb-Fr-HWt"/>

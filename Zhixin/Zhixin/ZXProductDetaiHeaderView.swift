@@ -85,6 +85,7 @@ class ZXProductDetaiHeaderView: UIView {
     @IBOutlet var zanscountLabel : UILabel?
     @IBOutlet var commentsLabel: UILabel?
     @IBOutlet var zanLine : UIView?
+//    @IBOutlet var avatarButton : UIButton?
     var avatars : NSMutableArray?
     var zanedPersons : NSMutableArray?
     
@@ -149,11 +150,9 @@ class ZXProductDetaiHeaderView: UIView {
                         
                         let uu = self.zanedPersons?.objectAtIndex(i) as? ZXUser
                         
-                        var ava = UIButton(frame: CGRectMake(15 + CGFloat(i) * (10 + 40), (self.zanscountLabel?.frame.origin.y)! + (self.zanscountLabel?.frame.size.height)! + 10, 40, 40))
-                        ava.layer.cornerRadius = 20
-                        ava.clipsToBounds = true
+                        var ava = ZXAvatarView(frame: CGRectMake(15 + CGFloat(i) * (10 + 40), (self.zanscountLabel?.frame.origin.y)! + (self.zanscountLabel?.frame.size.height)! + 10, 40, 40))
+                        ava.user = uu
                         self.addSubview(ava)
-                        ava.kf_setImageWithURL(NSURL(string: (uu?.avatar)!)!, forState: UIControlState.Normal)
                         self.avatars?.addObject(ava)
                     }
                     
@@ -165,6 +164,13 @@ class ZXProductDetaiHeaderView: UIView {
                 
             }
         })
+    }
+    
+    @IBAction func avatarButtonPressed(sendre : AnyObject) {
+        
+        let vc = ZXPersonViewController(nibName: "ZXPersonViewController", bundle: nil)
+        vc.user = self.news?.author
+        UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func zanPressed(sender : AnyObject) {
@@ -194,7 +200,7 @@ class ZXProductDetaiHeaderView: UIView {
                         
                         self.zanLabel?.text = String(score)
                         self.zanscountLabel?.text = String(score) + "人觉得很赞"
-                        
+                        self.news?.zans = (self.news?.zans)! + 1
                     } else {
                         
                     }
@@ -226,6 +232,10 @@ class ZXProductDetaiHeaderView: UIView {
                         
                         self.zanLabel?.text = String(score)
                         self.zanscountLabel?.text = String(score) + "人觉得很赞"
+                        self.news?.zans = (self.news?.zans)! - 1
+                        if self.news?.zans == 0 {
+                            self.news?.zans = 0
+                        }
                         
                     } else {
                         

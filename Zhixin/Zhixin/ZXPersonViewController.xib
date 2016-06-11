@@ -31,15 +31,18 @@
                                 <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="2Vh-nY-oX7"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NT-rC-6v4">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NT-rC-6v4" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="272" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="ECM-Mg-Zgb"/>
                                 <constraint firstAttribute="width" constant="40" id="LLd-Lk-DD6"/>
                             </constraints>
                             <state key="normal" image="add"/>
+                            <connections>
+                                <action selector="rightPubButtonPressed:" destination="-1" eventType="touchUpInside" id="YE0-VV-1Lm"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKz-u8-BjL">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKz-u8-BjL">
                             <rect key="frame" x="224" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Q7L-XG-BD7"/>

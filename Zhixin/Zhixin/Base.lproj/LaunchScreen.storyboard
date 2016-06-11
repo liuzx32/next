@@ -66,6 +66,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="nIcon" width="72" height="72"/>
+        <image name="nIcon" width="60" height="60"/>
     </resources>
 </document>

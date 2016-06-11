@@ -70,6 +70,11 @@
 		E3A3A4991CF18F1600C6C148 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A3A4981CF18F1600C6C148 /* CoreTelephony.framework */; };
 		E3A3A49B1CF18F1F00C6C148 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A3A49A1CF18F1F00C6C148 /* libstdc++.tbd */; };
 		E3A3A49D1CF18F2A00C6C148 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A3A49C1CF18F2A00C6C148 /* libz.tbd */; };
+		E3A4A95A1D02844800F6393D /* ZXDateProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A4A9581D02844800F6393D /* ZXDateProductsViewController.swift */; };
+		E3A4A95B1D02844800F6393D /* ZXDateProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3A4A9591D02844800F6393D /* ZXDateProductsViewController.xib */; };
+		E3A4A95D1D02B11800F6393D /* ZXNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A4A95C1D02B11800F6393D /* ZXNavigationButton.swift */; };
+		E3A4A95F1D02D27B00F6393D /* UIApplication+top.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A4A95E1D02D27B00F6393D /* UIApplication+top.swift */; };
+		E3A4A9611D02DCB100F6393D /* ZXAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A4A9601D02DCB100F6393D /* ZXAvatarView.swift */; };
 		E3F468F21CBD3C8B00A83106 /* ZXAccountLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F468F01CBD3C8B00A83106 /* ZXAccountLoginViewController.swift */; };
 		E3F468F31CBD3C8B00A83106 /* ZXAccountLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F468F11CBD3C8B00A83106 /* ZXAccountLoginViewController.xib */; };
 		E3F468F71CBD497C00A83106 /* ZXPublishNewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F468F51CBD497C00A83106 /* ZXPublishNewProductViewController.swift */; };
@@ -195,6 +200,11 @@
 		E3A3A49A1CF18F1F00C6C148 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		E3A3A49C1CF18F2A00C6C148 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		E3A3A49E1CF19A5A00C6C148 /* Zhixin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zhixin-Bridging-Header.h"; sourceTree = "<group>"; };
+		E3A4A9581D02844800F6393D /* ZXDateProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXDateProductsViewController.swift; sourceTree = "<group>"; };
+		E3A4A9591D02844800F6393D /* ZXDateProductsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXDateProductsViewController.xib; sourceTree = "<group>"; };
+		E3A4A95C1D02B11800F6393D /* ZXNavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXNavigationButton.swift; sourceTree = "<group>"; };
+		E3A4A95E1D02D27B00F6393D /* UIApplication+top.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+top.swift"; sourceTree = "<group>"; };
+		E3A4A9601D02DCB100F6393D /* ZXAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXAvatarView.swift; sourceTree = "<group>"; };
 		E3F468F01CBD3C8B00A83106 /* ZXAccountLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXAccountLoginViewController.swift; sourceTree = "<group>"; };
 		E3F468F11CBD3C8B00A83106 /* ZXAccountLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXAccountLoginViewController.xib; sourceTree = "<group>"; };
 		E3F468F51CBD497C00A83106 /* ZXPublishNewProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXPublishNewProductViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +384,7 @@
 				E307A0771CBA201300EE401E /* Colors.swift */,
 				E3F469291CC3627A00A83106 /* LoginedUser.swift */,
 				E391AAEF1CCC719A000E1180 /* HRToast+UIView.swift */,
+				E3A4A95E1D02D27B00F6393D /* UIApplication+top.swift */,
 			);
 			name = ThirdParty;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 				E3F9CBEA1CDF1F6600189828 /* ZXDateHeaderView.swift */,
 				E364E4681CE7234800D0A01E /* ZXProductCommentBar.swift */,
 				E364E46A1CE7235F00D0A01E /* ZXProductCommentBar.xib */,
+				E3A4A95C1D02B11800F6393D /* ZXNavigationButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -539,6 +551,8 @@
 				E3F468FF1CBE8FB300A83106 /* ZXProductDetailTableViewController.swift */,
 				E3F469001CBE8FB300A83106 /* ZXProductDetailTableViewController.xib */,
 				E3F4690B1CC2299E00A83106 /* ZXProductsTableViewController.swift */,
+				E3A4A9581D02844800F6393D /* ZXDateProductsViewController.swift */,
+				E3A4A9591D02844800F6393D /* ZXDateProductsViewController.xib */,
 				E3F4690D1CC22A3A00A83106 /* ZXSearchViewController.swift */,
 				E3F4690E1CC22A3A00A83106 /* ZXSearchViewController.xib */,
 				E3F469251CC3566400A83106 /* ZXTopicDetailViewController.swift */,
@@ -552,6 +566,7 @@
 			children = (
 				E3F469481CC3910600A83106 /* ZXPersonViewController.swift */,
 				E3F469491CC3910600A83106 /* ZXPersonViewController.xib */,
+				E3A4A9601D02DCB100F6393D /* ZXAvatarView.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -627,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F4694B1CC3910600A83106 /* ZXPersonViewController.xib in Resources */,
+				E3A4A95B1D02844800F6393D /* ZXDateProductsViewController.xib in Resources */,
 				E35924591CF981B600D23C26 /* WeiboSDK.bundle in Resources */,
 				E307A03F1CB947DE00EE401E /* LaunchScreen.storyboard in Resources */,
 				E307A03C1CB947DE00EE401E /* Assets.xcassets in Resources */,
@@ -716,6 +732,8 @@
 				E307A05B1CBA03CC00EE401E /* XWRefreshComponent.swift in Sources */,
 				E307A0511CB9F41F00EE401E /* ZXNews.swift in Sources */,
 				E3F469161CC32BF700A83106 /* ZXShareButton.swift in Sources */,
+				E3A4A95F1D02D27B00F6393D /* UIApplication+top.swift in Sources */,
+				E3A4A95D1D02B11800F6393D /* ZXNavigationButton.swift in Sources */,
 				E3F4693D1CC3858300A83106 /* ZXModifyPasswordViewController.swift in Sources */,
 				E391AAF01CCC719A000E1180 /* HRToast+UIView.swift in Sources */,
 				E307A04A1CB9592D00EE401E /* ZXNewsTableViewCell.swift in Sources */,
@@ -728,6 +746,7 @@
 				E307A06C1CBA03E100EE401E /* XWRefreshStateHeader.swift in Sources */,
 				E364E4691CE7234800D0A01E /* ZXProductCommentBar.swift in Sources */,
 				E307A0641CBA03D600EE401E /* XWRefreshFooter.swift in Sources */,
+				E3A4A9611D02DCB100F6393D /* ZXAvatarView.swift in Sources */,
 				E307A06E1CBA03EB00EE401E /* UIScrollViewExtension-XW.swift in Sources */,
 				E3F469091CBE978100A83106 /* ZXProductCommentCell.swift in Sources */,
 				E307A0631CBA03D600EE401E /* XWRefreshAutoStateFooter.swift in Sources */,
@@ -736,6 +755,7 @@
 				E307A0611CBA03D600EE401E /* XWRefreshAutoFooter.swift in Sources */,
 				E3F469391CC3801A00A83106 /* ZXUpdateProfileInfoViewController.swift in Sources */,
 				E3F4694A1CC3910600A83106 /* ZXPersonViewController.swift in Sources */,
+				E3A4A95A1D02844800F6393D /* ZXDateProductsViewController.swift in Sources */,
 				E35924311CF941F400D23C26 /* ImageUtility.m in Sources */,
 				E3F469181CC32F2100A83106 /* ZXShareView.swift in Sources */,
 				E3F468F71CBD497C00A83106 /* ZXPublishNewProductViewController.swift in Sources */,

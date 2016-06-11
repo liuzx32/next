@@ -11,6 +11,7 @@ import UIKit
 class ZXSearchViewController: UIViewController, UIScrollViewDelegate, topicsTableViewControllerDelegate, ZXDatePicerDelegate, productsTableViewControllerDelegate {
     
     @IBOutlet var backView: UIView?
+    @IBOutlet var naviView : UIView?
     @IBOutlet var scroll : UIScrollView?
     var productButton : UIButton!
     var topicButton : UIButton!
@@ -34,6 +35,7 @@ class ZXSearchViewController: UIViewController, UIScrollViewDelegate, topicsTabl
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.hidden = true
+        self.naviView?.backgroundColor = Colors.navigationColor()
 
         self.productButton = UIButton(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width / 2, 35))
         self.productButton.setTitle("产品", forState: UIControlState.Normal)
@@ -41,6 +43,7 @@ class ZXSearchViewController: UIViewController, UIScrollViewDelegate, topicsTabl
         self.productButton.setTitleColor(Colors.navigationColor(), forState: UIControlState.Selected)
         self.backView?.addSubview(self.productButton)
         self.productButton.addTarget(self, action: #selector(ZXSearchViewController.productButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.productButton.titleLabel?.font = UIFont.systemFontOfSize(18)
         self.productButton.selected = true
         
         self.topicButton = UIButton(frame: CGRectMake(self.productButton.frame.size.width, 0, self.productButton.frame.size.width, 35))
@@ -48,6 +51,7 @@ class ZXSearchViewController: UIViewController, UIScrollViewDelegate, topicsTabl
         self.topicButton.setTitleColor(Colors.UIColorFromRGB(0x333333), forState: UIControlState.Normal)
         self.topicButton.setTitleColor(Colors.navigationColor(), forState: UIControlState.Selected)
         self.backView?.addSubview(self.topicButton)
+        self.topicButton.titleLabel?.font = UIFont.systemFontOfSize(18)
         self.topicButton.addTarget(self, action: #selector(ZXSearchViewController.topicButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.indicator = UIView(frame: CGRectMake(0, 33, UIScreen.mainScreen().bounds.size.width / 2, 2))
@@ -122,6 +126,8 @@ class ZXSearchViewController: UIViewController, UIScrollViewDelegate, topicsTabl
     
     @IBAction func searchButtonPressed(sender : AnyObject) {
         
+        self.searchDate = ""
+        
         self.topicsView.startSearchWith((self.field?.text)!)
         self.productsView.startSearching((self.field?.text)!, date: self.searchDate)
         
@@ -193,12 +199,17 @@ class ZXSearchViewController: UIViewController, UIScrollViewDelegate, topicsTabl
         rect?.origin.y = UIScreen.mainScreen().bounds.size.height
         self.datePicker?.frame = rect!
         
-        var searching = self.field?.text
+        self.field?.text = date
         
-        if (searching) != nil {
-            self.field?.text = date + searching!
-        } else {
-            self.field?.text = date
-        }
+        self.topicsView.startSearchWith((self.field?.text)!)
+        self.productsView.startSearching((self.field?.text)!, date: self.searchDate)
+        
+        self.field?.resignFirstResponder()
+        
+//        if (searching) != nil {
+//            self.field?.text = date +
+//        } else {
+//            self.field?.text = date
+//        }
     }
 }

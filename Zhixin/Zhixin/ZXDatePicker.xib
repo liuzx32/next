@@ -31,13 +31,13 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k39-AT-hBu">
                     <rect key="frame" x="18" y="266" width="130" height="44"/>
-                    <color key="backgroundColor" red="0.066666666666666666" green="0.50980392156862742" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="6YG-ws-e7o"/>
                         <constraint firstAttribute="height" constant="44" id="gdq-sh-hDQ"/>
                     </constraints>
                     <state key="normal" title="取消">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.066666666669999999" green="0.50980392159999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="cancelButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="uKv-81-EkJ"/>
@@ -45,13 +45,13 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzz-2l-ofp">
                     <rect key="frame" x="172" y="266" width="130" height="44"/>
-                    <color key="backgroundColor" red="0.062745098039215685" green="0.50980392156862742" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="KHV-XX-tEw"/>
                         <constraint firstAttribute="height" constant="44" id="sVj-wz-NnY"/>
                     </constraints>
                     <state key="normal" title="确认">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.066666666669999999" green="0.50980392159999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="confirmButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="B1H-5V-b0T"/>

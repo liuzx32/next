@@ -12,8 +12,8 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     var navigationView : UIView!
     var icon : UIImageView!
-    var searchButton : UIButton!
-    var addButton : UIButton!
+    var searchButton : ZXNavigationButton!
+    var addButton : ZXNavigationButton!
     var tableView : UITableView!
     var headerView : ZXProfileHeaderView!
     var rows : NSMutableArray!
@@ -30,13 +30,14 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let myP = ["im" : "profile" , "title" : "我的主页" , "sub" : ""]
         let midEm = []
         let advice = ["im" : "advice" , "title" : "意见反馈" , "sub" : ""]
-        let about = ["im" : "about" , "title" : "关于我们" , "sub" : ""]
+        let about = ["im" : "about2" , "title" : "关于我们" , "sub" : ""]
         let update = ["im" : "update" , "title" : "版本更新" , "sub" : ""]
         
         self.rows = NSMutableArray(array: [topEm, manage, myP, midEm, advice, about, update])
         
         self.navigationView = UIView(frame: CGRectMake(0, 0, self.view!.frame.size.width, 64))
         self.navigationView.backgroundColor = Colors.UIColorFromRGB(0x0097e0)
+        self.navigationView.clipsToBounds = true
         
         self.icon = UIImageView(frame: CGRectMake(15, 25, 30, 30))
         self.icon.backgroundColor = UIColor.clearColor()
@@ -44,12 +45,12 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.icon.image = UIImage(named: "nIcon")
         self.navigationView.addSubview(self.icon)
         
-        self.searchButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 120, 5, 54, 54))
+        self.searchButton = ZXNavigationButton(frame: CGRectMake(self.view.frame.size.width - 100, 20, 40, 40))
         self.searchButton.addTarget(self, action: #selector(MyViewController.searchButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.searchButton.setImage(UIImage(named: "search"), forState: UIControlState.Normal)
         self.navigationView.addSubview(self.searchButton)
         
-        self.addButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 60, 5, 54, 54))
+        self.addButton = ZXNavigationButton(frame: CGRectMake(self.view.frame.size.width - 50, 20, 40, 40))
         self.addButton.addTarget(self, action: #selector(MyViewController.addButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.addButton.setImage(UIImage(named: "add"), forState: UIControlState.Normal)
         self.navigationView.addSubview(self.addButton)
@@ -60,6 +61,7 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.tableView.registerNib(UINib(nibName: "ZXProfileCell", bundle:nil), forCellReuseIdentifier: "profileCell")
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.tableView.backgroundColor = Colors.UIColorFromRGB(0xf2f2f2)
+        print("dd")
         
         self.headerView = NSBundle.mainBundle().loadNibNamed("ZXProfileHeaderView", owner: nil, options: nil)[0] as! ZXProfileHeaderView
         self.headerView.backgroundColor = Colors.navigationColor()
@@ -73,6 +75,7 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
         self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        self.tableView.scrollEnabled = false
         
         if LoginedUser.sharedInstance.userID <= 0 {
             let loginViewcontroller = ZXLoginViewController(nibName: "ZXLoginViewController", bundle: nil)
@@ -89,10 +92,28 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.hidden = false
+        
+        if LoginedUser.sharedInstance.userID <= 0 {
+            let loginViewcontroller = ZXLoginViewController(nibName: "ZXLoginViewController", bundle: nil)
+            let navi = UINavigationController(rootViewController: loginViewcontroller)
+            navi.navigationBar.hidden = true
+            self.presentViewController(navi, animated: true, completion: {
+                
+            })
+        } else {
+            self.headerView.user = LoginedUser.sharedInstance
+        }
     }
     
-    func searchButtonPressed(sender : UIButton) {
-        print("search!")
+    override func viewDidLayoutSubviews() {
+        self.tableView.separatorInset = UIEdgeInsetsMake(0,0,0,0)
+        self.tableView.layoutMargins = UIEdgeInsetsMake(0,0,0,0)
+        
+        if #available(iOS 9.0, *) {
+            self.tableView.cellLayoutMarginsFollowReadableWidth = false
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func addButtonPressed(sender : UIButton) {
@@ -168,9 +189,9 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         } else if title == "版本更新" {
 //            NSString *urlPath = [NSString stringWithFormat: @"https://itunes.apple.com/us/app/apple-store/id%@?mt=8", appId];
 //            return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlPath]];
-            
-            let url = "https://itunes.apple.com/us/app/apple-store/id%@?mt=8"
-            UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+            self.view.makeToast(message: "请前往APP Store进行更新下载")
+//            let url = "https://itunes.apple.com/us/app/apple-store/id%@?mt=8"
+//            UIApplication.sharedApplication().openURL(NSURL(string: url)!)
         } else if title == "我的主页" {
             
             if LoginedUser.sharedInstance.userID <= 0 {
@@ -187,6 +208,17 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.layoutMargins = UIEdgeInsetsMake(0,0,0,0)
+        cell.separatorInset = UIEdgeInsetsMake(0,0,0,0)
+        if #available(iOS 8.0, *) {
+            //            cell.cellLayoutMarginsFollowReadableWidth = false
+            cell.preservesSuperviewLayoutMargins = false
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
     func registerButtonPressed() {
         
         let controller = ZXAccountLoginViewController(nibName: "ZXAccountLoginViewController", bundle: nil)
@@ -199,6 +231,7 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func avatarButtonPressed() {
         let controller = ZXPersonViewController(nibName: "ZXPersonViewController", bundle: nil)
+        controller.user = LoginedUser.sharedInstance
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -208,5 +241,11 @@ class MyViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func logoutSuccess() {
         self.headerView.user = LoginedUser.sharedInstance
+    }
+    
+    func searchButtonPressed(sender : UIButton) {
+        print("search!")
+        let controller = ZXSearchViewController(nibName: "ZXSearchViewController", bundle: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

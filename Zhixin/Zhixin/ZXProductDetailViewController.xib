@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXProductDetailViewController" customModule="Zhixin" customModuleProvider="target">
             <connections>
                 <outlet property="back" destination="K53-Fc-dYW" id="fAQ-Z6-XPD"/>
+                <outlet property="naviView" destination="9PK-au-hcB" id="J6y-vr-fMh"/>
                 <outlet property="scroll" destination="vGV-LR-mL1" id="J2E-0Z-09Z"/>
                 <outlet property="tLabel" destination="Tmf-0d-Aey" id="Jfq-mg-bqK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,7 +33,7 @@
                                 <action selector="backButtonPress:" destination="-1" eventType="touchUpInside" id="1xm-C7-49C"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxW-OQ-24L">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxW-OQ-24L" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="272" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="FKh-R6-uzw"/>
@@ -43,7 +44,7 @@
                                 <action selector="addButtonPress:" destination="-1" eventType="touchUpInside" id="In8-KS-pUm"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNQ-Z4-diO">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNQ-Z4-diO">
                             <rect key="frame" x="224" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="6UH-wM-wDd"/>

@@ -24,4 +24,7 @@ class Colors: NSObject {
         )
     }
 
+    static func highlightedNaviColor() -> UIColor {
+        return UIColor(red: 16.0 / 255.0, green: 130.0 / 255.0, blue : 216.0 / 255.0, alpha: 1)
+    }
 }

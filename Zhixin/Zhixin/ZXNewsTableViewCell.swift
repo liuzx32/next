@@ -18,6 +18,7 @@ class ZXNewsTableViewCell: UITableViewCell {
     @IBOutlet var conLabel : UILabel!
     
     @IBOutlet var avatar : UIImageView!
+    @IBOutlet var avatarButton : UIButton!
 
     override func awakeFromNib() {
         self.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -29,6 +30,7 @@ class ZXNewsTableViewCell: UITableViewCell {
         self.conLabel.textColor = Colors.UIColorFromRGB(0x757575)
         self.avatar.layer.cornerRadius = self.avatar.frame.size.height / 2
         self.avatar.clipsToBounds = true
+        self.avatarButton.userInteractionEnabled = true
     }
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {
@@ -49,6 +51,13 @@ class ZXNewsTableViewCell: UITableViewCell {
         } else {
             self.contentView.backgroundColor = UIColor.whiteColor()
         }
+    }
+    
+    @IBAction func avatarButtonPressed(sender : AnyObject) {
+        
+        let vc = ZXPersonViewController(nibName: "ZXPersonViewController", bundle: nil)
+        vc.user = self.news?.author
+        UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func zanButtonPressed(sender : AnyObject) {
@@ -75,6 +84,10 @@ class ZXNewsTableViewCell: UITableViewCell {
                         self.zanButton.layer.borderColor = Colors.UIColorFromRGB(0x757575).CGColor
                         self.zanLabel.textColor = Colors.UIColorFromRGB(0x757575)
                         self.shadowN?.zaned = false
+                        self.news?.zans = (self.news?.zans)! - 1
+                        if self.news?.zans <= 0 {
+                            self.news?.zans = 0
+                        }
                         
                     } else {
                         
@@ -107,6 +120,7 @@ class ZXNewsTableViewCell: UITableViewCell {
                         self.zanButton.layer.borderColor = Colors.UIColorFromRGB(0x0097e0).CGColor
                         self.zanLabel.textColor = Colors.UIColorFromRGB(0x0097e0)
                         self.shadowN?.zaned = true
+                        self.news?.zans = (self.news?.zans)! + 1
                         
                     } else {
                         

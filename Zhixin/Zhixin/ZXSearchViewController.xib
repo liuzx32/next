@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="backView" destination="bgv-2H-2gY" id="8qZ-Bo-BFs"/>
                 <outlet property="field" destination="B2z-sF-JGJ" id="GPq-xb-Uzs"/>
+                <outlet property="naviView" destination="XsI-yX-d20" id="vIE-BT-zdP"/>
                 <outlet property="scroll" destination="kRs-lW-7Gy" id="zIA-5o-rcY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Odm-ET-kxP"/>
             </connections>
@@ -18,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsI-yX-d20">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsI-yX-d20">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xB-85-Hx4">
@@ -32,7 +33,7 @@
                                 <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="XrX-VY-Dl6"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9F-ze-G65">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9F-ze-G65" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="272" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="e3g-uB-bPE"/>
@@ -43,7 +44,7 @@
                                 <action selector="clanderButtonPressed:" destination="-1" eventType="touchUpInside" id="55Z-Vq-QdJ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWf-cE-HMy">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWf-cE-HMy" customClass="ZXNavigationButton" customModule="Zhixin" customModuleProvider="target">
                             <rect key="frame" x="218" y="16" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="ZzZ-lf-Va3"/>
@@ -57,6 +58,7 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索产品,主题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2z-sF-JGJ">
                             <rect key="frame" x="45" y="21" width="165" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>

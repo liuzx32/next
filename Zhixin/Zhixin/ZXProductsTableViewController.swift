@@ -10,6 +10,7 @@ enum productsType {
     case zans
     case publishes
     case search
+    case atDate
 }
 
 import UIKit
@@ -31,15 +32,7 @@ class ZXProductsTableViewController: UITableViewController {
     var date : String?
     var term : String?
     
-//    init(style: UITableViewStyle, type : productsType) {
-//        
-//        self.productType = type
-//        super.init(style : style)
-//    }
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    var userID : Int32?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +47,8 @@ class ZXProductsTableViewController: UITableViewController {
         self.tableView?.headerView?.endRefreshing()
         
         self.tableView?.footerView = XWRefreshAutoNormalFooter(target: self, action: #selector(ZXTopicsTableViewController.loadMoreDatas))
+        
+        self.tableView?.headerView?.beginRefreshing()
 
     }
     
@@ -63,6 +58,11 @@ class ZXProductsTableViewController: UITableViewController {
         self.date = date
         
         self.tableView.headerView?.beginRefreshing()
+    }
+    
+    func startFetchInDate(date : String?) {
+        
+        self.date = date
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,6 +99,8 @@ class ZXProductsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let news = self.products![indexPath.row] as? ZXNews
         self.delegate?.productsTableViewControllerDidSelectProduct(news)
     }
@@ -121,11 +123,12 @@ class ZXProductsTableViewController: UITableViewController {
             paras = ["page" : num,
                      "rows" : "15",]
             
-            if self.term?.characters.count > 0 {
+            if self.term?.characters.count > 0 && !(self.term == self.date) {
                 paras["term"] = self.term!
-                if self.date?.characters.count > 0 {
-                    paras["date"] = self.date!
-                }
+            }
+            
+            if self.date?.characters.count > 0 {
+                paras["date"] = self.date!
             }
             
             if self.term?.characters.count <= 0 && self.date?.characters.count <= 0 {
@@ -208,10 +211,108 @@ class ZXProductsTableViewController: UITableViewController {
             })
         } else if self.productType == productsType.publishes {
             
+            if self.userID == LoginedUser.sharedInstance.userID {
+                paras = ["page" : num,
+                         "rows" : "15",]
+                
+                Alamofire.request(.POST, "http://www.npinfang.com/take/user/item", parameters: paras).responseJSON(completionHandler: { (response) in
+                    self.tableView.headerView?.endRefreshing()
+                    
+                    do {
+                        let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+                        //                print("the Json is \(JSON)")
+                        print("so the data is \(JSON["data"]!)")
+                        
+                        let code = JSON["code"]!!.integerValue
+                        if code == 200 {
+                            
+                            self.products?.removeAllObjects()
+                            
+                            let data = JSON["data"]
+                            self.totalPages = data!!["pages"] as? NSInteger
+                            let list = data!!["list"]! as? NSArray
+                            
+                            if list != nil {
+                                for dict in list! {
+                                    
+                                    let topic = ZXNews(dict: dict as! NSDictionary)
+                                    self.products?.addObject(topic)
+                                }
+                            }
+                            self.tableView.reloadData()
+                            
+                        } else {
+                            self.view.makeToast(message: "服务器故障")
+                        }
+                        
+                        self.tableView.headerView?.endRefreshing()
+                    } catch {
+                        
+                    }
+                })
+            } else {
+                
+//                uno=1,  别的用户的uno，用于查看别的用户的数据；
+//                page=1,  数据较多时的分页页码；
+//                rows=15,  分页时每页显示的条目数量；
+                
+                let uno = Int(self.userID!) as NSNumber
+                paras = ["page" : num,
+                         "rows" : "15",
+                         "uno" : uno]
+                
+                Alamofire.request(.POST, "http://www.npinfang.com/scan/user/item", parameters: paras).responseJSON(completionHandler: { (response) in
+                    self.tableView.headerView?.endRefreshing()
+                    
+                    do {
+                        let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+                        //                print("the Json is \(JSON)")
+                        print("so the data is \(JSON["data"]!)")
+                        
+                        let code = JSON["code"]!!.integerValue
+                        if code == 200 {
+                            
+                            self.products?.removeAllObjects()
+                            
+                            let data = JSON["data"]
+                            self.totalPages = data!!["pages"] as? NSInteger
+                            let list = data!!["list"]! as? NSArray
+                            if list != nil {
+                                
+                                for dict in list! {
+                                    
+                                    let topic = ZXNews(dict: dict as! NSDictionary)
+                                    self.products?.addObject(topic)
+                                }
+                            }
+                            
+                            
+                            self.tableView.reloadData()
+                            
+                        } else {
+                            self.view.makeToast(message: "服务器故障")
+                        }
+                        
+                        self.tableView.headerView?.endRefreshing()
+                    } catch {
+                        
+                    }
+                })
+
+            }
+            
+            
+            
+        } else if self.productType == productsType.atDate {
+            
             paras = ["page" : num,
                      "rows" : "15",]
             
-            Alamofire.request(.POST, "http://test.npinfang.com/take/user/item", parameters: paras).responseJSON(completionHandler: { (response) in
+            if self.date?.characters.count > 0 {
+                paras["date"] = self.date!
+            }
+            
+            Alamofire.request(.POST, "http://www.npinfang.com/apps/item/date", parameters: paras).responseJSON(completionHandler: { (response) in
                 self.tableView.headerView?.endRefreshing()
                 
                 do {
@@ -240,6 +341,7 @@ class ZXProductsTableViewController: UITableViewController {
                     }
                     
                     self.tableView.headerView?.endRefreshing()
+                    
                 } catch {
                     
                 }
@@ -250,6 +352,7 @@ class ZXProductsTableViewController: UITableViewController {
     func loadMoreDatas() {
         
         if (self.totalPages)! <= (self.pages)! {
+            UIApplication.sharedApplication().keyWindow!.makeToast(message: "没有更多数据了")
             return
         }
         
@@ -268,11 +371,13 @@ class ZXProductsTableViewController: UITableViewController {
             paras = ["page" : num,
                      "rows" : "15",]
             
-            if self.term?.characters.count > 0 {
+            if self.term?.characters.count > 0 && !(self.term == self.date) {
                 paras["term"] = self.term!
-                if self.date?.characters.count > 0 {
-                    paras["date"] = self.date!
-                }
+                
+            }
+            
+            if self.date?.characters.count > 0 {
+                paras["date"] = self.date!
             }
             
             if self.term?.characters.count <= 0 && self.date?.characters.count <= 0 {
@@ -303,6 +408,9 @@ class ZXProductsTableViewController: UITableViewController {
                         
                         self.tableView.reloadData()
                         self.tableView?.footerView?.endRefreshing()
+                        if list.count <= 0 {
+                            UIApplication.sharedApplication().keyWindow!.makeToast(message: "没有更多数据了")
+                        }
                         
                     } else {
                         self.view.makeToast(message: "服务器故障")
@@ -380,6 +488,51 @@ class ZXProductsTableViewController: UITableViewController {
                         
                         self.tableView.reloadData()
                         self.tableView?.footerView?.endRefreshing()
+                        
+                    } else {
+                        self.view.makeToast(message: "服务器故障")
+                        self.tableView?.footerView?.endRefreshing()
+                    }
+                    
+                } catch {
+                    
+                }
+            })
+        } else if self.productType == productsType.atDate {
+            
+            paras = ["page" : num,
+                     "rows" : "15",]
+            
+            if self.date?.characters.count > 0 {
+                paras["date"] = self.date!
+            }
+            
+            Alamofire.request(.POST, "http://www.npinfang.com/apps/item/date", parameters: paras).responseJSON(completionHandler: { (response) in
+                self.tableView.headerView?.endRefreshing()
+                
+                do {
+                    let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+                    //                print("the Json is \(JSON)")
+                    print("so the data is \(JSON["data"]!)")
+                    
+                    let code = JSON["code"]!!.integerValue
+                    if code == 200 {
+                        
+                        //                        self.products?.removeAllObjects()
+                        
+                        let data = JSON["data"]
+                        let list = data!!["list"]! as! NSArray
+                        for dict in list {
+                            
+                            let topic = ZXNews(dict: dict as! NSDictionary)
+                            self.products?.addObject(topic)
+                        }
+                        
+                        self.tableView.reloadData()
+                        self.tableView?.footerView?.endRefreshing()
+                        if list.count <= 0 {
+                            UIApplication.sharedApplication().keyWindow!.makeToast(message: "没有更多数据了")
+                        }
                         
                     } else {
                         self.view.makeToast(message: "服务器故障")

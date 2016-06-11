@@ -23,6 +23,7 @@ class ZXPublishNewProductViewController: UIViewController {
     @IBOutlet var desField : UITextField?
     @IBOutlet var bottomLine : UIView?
     @IBOutlet var tLabel : UILabel?
+    @IBOutlet var naviView : UIView?
     
     var toTopic : ZXTopic?
     
@@ -42,6 +43,7 @@ class ZXPublishNewProductViewController: UIViewController {
         super.viewDidLoad()
 
         self.tabBarController?.tabBar.hidden = true
+        self.naviView?.backgroundColor = Colors.navigationColor()
         // Do any additional setup after loading the view.
         
         if self.tt == NewType.newTypeTopic {
@@ -58,6 +60,12 @@ class ZXPublishNewProductViewController: UIViewController {
             self.netFiled?.placeholder = "产品官网"
             self.desField?.placeholder = "一句话描述"
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.nameFiled?.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

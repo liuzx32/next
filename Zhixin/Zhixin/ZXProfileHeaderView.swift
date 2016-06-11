@@ -33,17 +33,21 @@ class ZXProfileHeaderView: UIView {
                 self.avatar?.image = UIImage(named: "")
                 if newV?.avatar?.characters.count <= 0 {
                     self.avatar?.image = UIImage(named: "nIcon")
+                } else {
+                    self.avatar?.kf_setImageWithURL(NSURL(string: (newV?.avatar)!)!, placeholderImage: UIImage(named: "nIcon"))
                 }
+                
                 self.nameLabel?.text = newV?.nickName
-                self.levelLabel?.text = ""
+                self.levelLabel?.text = newV?.job
                 self.levelLabel?.hidden = false
                 self.desLabel?.hidden = false
-                self.desLabel?.text = ""
+                self.desLabel?.text = newV?.sig
                 self.sepView?.hidden = false
                 self.loginButton?.hidden = true
+                self.avatarButton?.userInteractionEnabled = true
             } else {
                 
-                self.avatar?.image = UIImage(named: "")
+                self.avatar?.image = UIImage(named: "anoymous")
                 self.nameLabel?.text = "点击登录"
                 self.levelLabel?.text = ""
                 self.levelLabel?.hidden = true
@@ -51,6 +55,7 @@ class ZXProfileHeaderView: UIView {
                 self.desLabel?.text = ""
                 self.sepView?.hidden = true
                 self.loginButton?.hidden = false
+                self.avatarButton?.userInteractionEnabled = false
             }
         }
         
@@ -69,6 +74,10 @@ class ZXProfileHeaderView: UIView {
         self.loginButton?.hidden = false
         
         self.avatar?.layer.cornerRadius = (self.avatar?.frame.size.height)! / 2;
+        self.avatar?.layer.borderWidth = 1
+        self.avatar?.layer.borderColor = UIColor.whiteColor().CGColor
+        self.avatar?.contentMode = UIViewContentMode.ScaleAspectFill
+        self.avatar?.clipsToBounds = true
     }
     
     @IBAction func loginButtonPressed(sender : AnyObject) {
